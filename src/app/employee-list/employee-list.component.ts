@@ -29,4 +29,14 @@ export class EmployeeListComponent implements OnInit {
   updateEmployee(id: number) {
     this.router.navigate(['update-employee', id]);
   }
+
+  // tslint:disable-next-line:typedef
+  deleteEmployee(id: number) {
+    if (confirm('Are you sure')){
+      this.employeeService.deleteEmployee(id).subscribe(data => {
+        console.log(data);
+        this.getEmployees();
+      });
+    }
+  }
 }
